@@ -1,0 +1,13 @@
+= opfab-apis
+
+Experimentations regarding code and doc generation for OperatorFabric APIs
+
+== Structure
+
+* current : This folder contains the classes generated under client and services in the operatorfabric-core repo
+(revision 42485d714f2d20b2e75cc88479d004c44a9ffaf5)
+
+== Notes
+
+Card model classes exist under 3 different packages (`org.opfab.cards`, `org.opfab.cards.consultation`,
+`org.opfab.cards.publication`)
