@@ -7,7 +7,16 @@ Experimentations regarding code and doc generation for OperatorFabric APIs
 * current : This folder contains the classes generated under client and services in the operatorfabric-core repo
 (revision 42485d714f2d20b2e75cc88479d004c44a9ffaf5)
 
+== Useful links
+
+* https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-gradle-plugin/README.adoc[OpenAPI Generator Gradle Plugin README]
+
+== TODO
+
+Look into adoc doc generation
+
 == Notes
 
 Card model classes exist under 3 different packages (`org.opfab.cards`, `org.opfab.cards.consultation`,
 `org.opfab.cards.publication`)
+
