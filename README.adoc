@@ -11,12 +11,46 @@ Experimentations regarding code and doc generation for OperatorFabric APIs
 
 * https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-gradle-plugin/README.adoc[OpenAPI Generator Gradle Plugin README]
 
+== Interesting generators
+
+.Server
+* https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/spring.md[Spring]
+
+.Documentation
+* https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/asciidoc.md[Asciidoc]
+* https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/html.md[HTML]
+* https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/html2.md[HTML2]
+* https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/openapi.md[OpenAPI ??]
+
 == TODO
 
 Look into adoc doc generation
+Global properties vs config.json file?
+Compare existing "custom" templates with standard
+Look into disallowAdditionalPropertiesIfNotPresent
+
+Remove swagger annotations (currently done with custom generator) => not doable at the moment
+
+Couldn't we just remove the templates that we don't need (or don't need to customize)?
 
 == Notes
 
+=== Current generation
 Card model classes exist under 3 different packages (`org.opfab.cards`, `org.opfab.cards.consultation`,
 `org.opfab.cards.publication`)
+
+=== Experimentation
+
+Looking at EntitiesAPI
+
+delegatePattern: true => generates XXXApi class with _someMethod() bearing the controller annotations and calling
+someMethod() (which is meant to be overridden).
+That's how it's done in current generation. Maybe we would lose the annotations when implementing the interface otherwise?
+//TODO Find out what it's for
+
+useBeanValidation: true or absent adds the @Validated annotation and (import javax.validation.Valid;
+import javax.validation.constraints.*;)
+useBeanValidation is set to true in current generation yet annotation and imports are not present => maybe taken out of template?
+
+
 

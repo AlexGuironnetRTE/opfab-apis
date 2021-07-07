@@ -9,10 +9,109 @@ plugins {
     id "org.openapi.generator" version "5.1.0"
 }
 
-openApiGenerate {
+task buildSpringServer(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask){
     generatorName = "spring"
     inputSpec = "$rootDir/specs/users.yaml".toString()
-    outputDir = "$buildDir/generated".toString()
+    outputDir = "$buildDir/generated/server/spring/".toString()
+    apiPackage = "org.opfab.users.controllers"
+    invokerPackage = "org.opfab.users.invokers"
+    modelPackage = "org.opfab.users.model"
+    configOptions = [
+            dateLibrary: "java8",
+            interfaceOnly: "true",
+            hideGenerationTimestamp: "true",
+            delegatePattern: "true",
+            useBeanValidation: "false",
+            apiFirst: "true"
+    ]
+    importMappings = [
+            EpochDate: "java.time.Instant"
+    ]
+
+}
+
+task buildJavaClient(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask){
+    generatorName = "java"
+    inputSpec = "$rootDir/specs/users.yaml".toString()
+    outputDir = "$buildDir/generated/client/java/".toString()
+    apiPackage = "org.opfab.users.controllers"
+    invokerPackage = "org.opfab.users.invokers"
+    modelPackage = "org.opfab.users.model"
+    configOptions = [
+            dateLibrary: "java8"
+    ]
+}
+
+task buildAsciiDocDoc(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask){
+    generatorName = "asciidoc"
+    inputSpec = "$rootDir/specs/users.yaml".toString()
+    outputDir = "$buildDir/generated/doc/asciidoc/".toString()
+    apiPackage = "org.opfab.users.controllers"
+    invokerPackage = "org.opfab.users.invokers"
+    modelPackage = "org.opfab.users.model"
+    configOptions = [
+            dateLibrary: "java8"
+    ]
+}
+
+task buildHtmlDoc(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask){
+    generatorName = "html"
+    inputSpec = "$rootDir/specs/users.yaml".toString()
+    outputDir = "$buildDir/generated/doc/html/".toString()
+    apiPackage = "org.opfab.users.controllers"
+    invokerPackage = "org.opfab.users.invokers"
+    modelPackage = "org.opfab.users.model"
+    configOptions = [
+            dateLibrary: "java8"
+    ]
+}
+
+task buildHtml2Doc(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask){
+    generatorName = "html2"
+    inputSpec = "$rootDir/specs/users.yaml".toString()
+    outputDir = "$buildDir/generated/doc/html2/".toString()
+    apiPackage = "org.opfab.users.controllers"
+    invokerPackage = "org.opfab.users.invokers"
+    modelPackage = "org.opfab.users.model"
+    configOptions = [
+            dateLibrary: "java8"
+    ]
+}
+
+task buildOpenApiDoc(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask){
+    generatorName = "openapi"
+    inputSpec = "$rootDir/specs/users.yaml".toString()
+    outputDir = "$buildDir/generated/doc/openapi/".toString()
+    apiPackage = "org.opfab.users.controllers"
+    invokerPackage = "org.opfab.users.invokers"
+    modelPackage = "org.opfab.users.model"
+    configOptions = [
+            dateLibrary: "java8"
+    ]
+}
+
+task buildOpenApiYamlDoc(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask){
+    generatorName = "openapi-yaml"
+    inputSpec = "$rootDir/specs/users.yaml".toString()
+    outputDir = "$buildDir/generated/doc/openapi-yaml/".toString()
+    apiPackage = "org.opfab.users.controllers"
+    invokerPackage = "org.opfab.users.invokers"
+    modelPackage = "org.opfab.users.model"
+    configOptions = [
+            dateLibrary: "java8"
+    ]
+}
+
+task openApiMetaAlex(type: org.openapitools.generator.gradle.plugin.tasks.MetaTask) {
+    generatorName = "AlexGenerator"
+    packageName = "org.some.package"
+    outputFolder = "$buildDir/generated/meta/".toString()
+}
+
+task buildDynamicHtmlDoc(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask){
+    generatorName = "dynamic-html"
+    inputSpec = "$rootDir/specs/users.yaml".toString()
+    outputDir = "$buildDir/generated/doc/dynamic-html/".toString()
     apiPackage = "org.opfab.users.controllers"
     invokerPackage = "org.opfab.users.invokers"
     modelPackage = "org.opfab.users.model"
